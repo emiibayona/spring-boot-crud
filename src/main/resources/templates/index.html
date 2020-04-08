@@ -10,7 +10,7 @@
         <div class="container mt-4">
             <div class="card border-info">
                 <div class="card-header bg-info text-white">
-                    <a href="agregar.htm" class="btn">Agregar Persona</a>
+                    <a th:href="@{/agregarGet}" class="btn">Agregar Persona</a>
                 </div>
                 <div class="card-body">
                     <table border="1">
@@ -19,21 +19,22 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
+                        <th>Telefono</th>
                         <th>Acciones</th>
                         </tr>
                         </thead>
                         <tbody>  
-                            <tr th:each="usuarios:${usuarios}">
-                            <td>${persona.ci}</td>
-                            <td>${persona.nombre}</td>
-                            <td>${persona.apellido}</td>
-                            <td><a href="editar.htm?id=${persona.ci}"> Editar</a> / <a href="borrar.htm?id=${persona.ci}">Borrar </a></td>
+                            <tr th:each="usuario:${usuarios}">
+                            <td th:text="${usuario.ci}"></td>
+                            <td th:text="${usuario.nombre}"></td>
+                            <td th:text="${usuario.apellido}"></td>
+                            <td th:text="${usuario.telefono}"></td>
+                            <td><a th:href="@{/editar/}+${usuario.ci}"> Editar</a> / <a th:href="@{/borrar/}+${usuario.ci}"> Borrar </a></td>
                             </tr>                       
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
     </body>
 </html>

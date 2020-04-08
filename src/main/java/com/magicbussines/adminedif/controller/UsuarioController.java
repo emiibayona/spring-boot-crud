@@ -23,7 +23,7 @@ public class UsuarioController {
 	@Autowired
 	private IUsuarioService userService;
 	
-	@GetMapping("/listar")
+	@GetMapping("/")
 	public String listar(Model model) {
 		List<Usuario> usuarios = userService.listar();
 		model.addAttribute("usuarios",usuarios);
@@ -39,7 +39,7 @@ public class UsuarioController {
 	@PostMapping("/save")
 	public String agregarPost(@Valid Usuario u,Model model) {
 		userService.save(u);
-		return "redirect:/listar";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/editar/{ci}")
@@ -52,7 +52,7 @@ public class UsuarioController {
 	@GetMapping("/borrar/{ci}")
 	public String borrar(@PathVariable long ci, Model model) {
 		userService.delete(ci);
-		return "redirect:/listar";
+		return "redirect:/";
 	}
 
 }
